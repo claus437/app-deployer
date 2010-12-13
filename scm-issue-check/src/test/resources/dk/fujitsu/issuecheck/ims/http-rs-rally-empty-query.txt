@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 7506
+Connection: close
+Content-Type: text/html; charset=UTF-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<QueryResult rallyAPIMajor="1" rallyAPIMinor="22">
+  <Errors />
+  <Warnings />
+  <TotalResultCount>0</TotalResultCount>
+  <StartIndex>1</StartIndex>
+  <PageSize>20</PageSize>
+</QueryResult>

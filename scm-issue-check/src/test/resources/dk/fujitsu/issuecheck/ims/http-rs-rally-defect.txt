@@ -1,0 +1,76 @@
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Content-Length: 7506
+Connection: close
+Content-Type: text/html; charset=UTF-8
+
+<?xml version="1.0" encoding="UTF-8"?>
+<QueryResult rallyAPIMajor="1" rallyAPIMinor="22">
+  <Errors />
+  <Warnings />
+  <TotalResultCount>1</TotalResultCount>
+  <StartIndex>1</StartIndex>
+  <PageSize>20</PageSize>
+  <Results>
+
+    <Object rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/defect/2225933126" objectVersion="10" refObjectName="Telia Talk IFT - After validation there is no text feedback for customer" CreatedAt="Oct 6" type="Defect">
+      <CreationDate>2010-10-06T09:21:59.429Z</CreationDate>
+      <ObjectID>2225933126</ObjectID>
+      <Subscription rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/subscription/263694735" refObjectName="Fujitsu Denmark" type="Subscription" />
+      <Workspace rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/workspace/263694739" refObjectName="Fujitsu" type="Workspace" />
+      <Changesets />
+      <Description>&lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Timestamp 11.11&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;span style="" lang="EN-US"&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;b style=""&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Step by step: &lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/b&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Go to self service and log on Telia Talk v1 customer&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Register&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Log out&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;Log in again and validate customer.&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font face="Calibri" size="3"&gt;- &amp;gt; &lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;No text feedback right after validation.&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font face="Calibri" size="3"&gt;&lt;span style="" lang="EN-US"&gt;&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&amp;nbsp;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font face="Calibri" size="3"&gt;Same result for Telia Talk customer.&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font face="Calibri" size="3"&gt;New timestamp: 11.32&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&amp;nbsp;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt;&lt;span style="" lang="EN-US"&gt;&lt;font face="Calibri" size="3"&gt;Does it have to do with &lt;/font&gt;&lt;a href="https://rally1.rallydev.com/slm/detail/df/2211042778"&gt;&lt;span style="color: windowtext; text-decoration: none;"&gt;&lt;font face="Calibri" size="3"&gt;DE1191&lt;/font&gt;&lt;/span&gt;&lt;/a&gt;&lt;font size="3"&gt;&lt;font face="Calibri"&gt; same reason? Nobill to slow?&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/font&gt;&lt;/font&gt;&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt; &lt;/p&gt;  &lt;/span&gt;  &amp;nbsp;  &lt;p&gt;&lt;/p&gt;</Description>
+
+      <Discussion />
+      <FormattedID>DE1202</FormattedID>
+      <LastUpdateDate>2010-10-24T15:11:25.449Z</LastUpdateDate>
+      <Name>Telia Talk IFT - After validation there is no text feedback for customer</Name>
+      <Notes>&lt;p&gt;Lavanya (06-10-2010):&lt;br /&gt;There was slow/no backend response from the NoBill&amp;nbsp;service. &lt;br /&gt;This is working fine now. Please retest.&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style=""&gt;Rani (08-10-2010):&lt;/span&gt;&lt;/p&gt;  &lt;p class="MsoNormal" style="margin: 0cm 0cm 10pt;"&gt;&lt;span style=""&gt;Test OK&lt;/span&gt;&lt;/p&gt;</Notes>
+
+      <Owner rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/user/1398286114" refObjectName="Mariana Novakov" type="User" />
+      <Project rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/project/1702950520" refObjectName="Online-GDC" type="Project" />
+      <RevisionHistory rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/revisionhistory/2225933127" type="RevisionHistory" />
+      <Tags />
+      <AcceptedDate>2010-10-08T12:21:10.415Z</AcceptedDate>
+      <AffectsDoc>false</AffectsDoc>
+      <Attachments>
+        <Attachment rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/attachment/2225933352" refObjectName="After validation there is no text feedback for customer.docx" type="Attachment" />
+
+      </Attachments>
+      <Blocked>false</Blocked>
+      <ClosedDate>2010-10-08T11:58:20.955Z</ClosedDate>
+      <Duplicates />
+      <Environment>Development</Environment>
+      <Iteration rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/iteration/2165356083" refObjectName="Iteration 2-2" type="Iteration" />
+      <Priority>Normal</Priority>
+
+      <Rank>251561986189.024</Rank>
+      <Release rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/release/1918399426" refObjectName="Release 2" type="Release" />
+      <ReleaseNote>false</ReleaseNote>
+      <Resolution>None</Resolution>
+      <ScheduleState>Accepted</ScheduleState>
+      <Severity>Medium Problem</Severity>
+
+      <State>Closed</State>
+      <SubmittedBy rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/user/1398286114" refObjectName="Mariana Novakov" type="User" />
+      <TaskActualTotal>0.0</TaskActualTotal>
+      <TaskEstimateTotal>0.0</TaskEstimateTotal>
+      <TaskRemainingTotal>0.0</TaskRemainingTotal>
+      <TaskStatus>COMPLETED</TaskStatus>
+
+      <Tasks>
+        <Task rallyAPIMajor="1" rallyAPIMinor="22" ref="https://rally1.rallydev.com/slm/webservice/1.22/task/2226301292" refObjectName="DEV" type="Task" />
+      </Tasks>
+      <TestCaseStatus>NONE</TestCaseStatus>
+      <TestCases />
+      <KanbanState>In UAT</KanbanState>
+      <TTID>
+        <LinkID />
+
+        <DisplayString />
+      </TTID>
+      <Type>Code Error</Type>
+    </Object>
+  </Results>
+</QueryResult>
+

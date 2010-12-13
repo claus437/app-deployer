@@ -1,0 +1,111 @@
+585ca76 TEST-X2
+502d0b1 TEST-X1
+efa255e TEST222
+190e032 TEST111
+d70beae TEST22
+540cea4 TEST11
+51ea75e TEST2
+546aa08 TEST1
+767f4be o2
+36650c9 o1
+a50ee68 f2.
+40c0d56 f2.
+9760272 f1.
+d60ca22 2.
+aebcfd7 1.
+a9be1d0 DE1347 merged file changed second
+d1deb30 DE1347 merged file changed first
+a20f3c1 DE1347 merged file changed
+97593df DE1347 merged file changed
+757868d DE1347 merged file changed
+49aea38 DE1347 merged file changed
+3ecac45 DE1347 merged file changed first update commit
+4fa97f7 DE1347 merged file changed second commit
+[git@cia cas.git]$ git log --pretty=format:%s
+TEST-X2
+TEST-X1
+TEST222
+TEST111
+TEST22
+TEST11
+TEST2
+TEST1
+o2
+o1
+f2.
+f2.
+f1.
+2.
+1.
+DE1347 merged file changed second
+DE1347 merged file changed first
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed first update commit
+DE1347 merged file changed second commit
+DE1347 merged file changed first commit
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 merged file changed
+DE1347 Latest commit in MyFirstCommitFile
+DE1347 where is the commit message
+DE1347 one more test
+DE1347 just a test
+Second commit
+Second commit
+Second commit
+Second commit
+Second commit
+Second commit
+First commit
+TELIASONERA-1 started
+CAS-194 release branch created
+CAS-194 release branch merged to trunk
+TELIASONERA-1
+TELIASONERA-87 : DE1442
+TELIASONERA-420 ( Revert the changes for the RT#335667, Will commit once priorit
+TELIASONERA-87 : DE1442
+TELIASONERA-420 ( Fix for the RT: 335667)
+TELIASONERA-420 ( Fix for the RT:335667)
+TELIASONERA-87 : DE1440
+TELIASONERA-87 : DE1437
+TELIASONERA-419
+TELIASONERA-418
+TELIASONERA-87 : DE1434
+TELIASONERA-87 : QC2233
+TELIASONERA-397
+CAS-177
+TELIASONERA-416
+TELIASONERA-415 DE1416 fixed
+TELIASONERA-415 DE1416 fixed
+TELIASONERA-397
+TELIASONERA-397
+TELIASONERA-87 : DE1411
+TELIASONERA-414
+CAS-9: Added a transparent way of loading bean factory for web and test.
+TELIASONERA-87 : DE1343
+TELIASONERA-410 DE1363 fixed
+TELIASONERA-410 DE1363 fixed
+TELIASONERA-410 DE1363 fixed
+TELIASONERA-87 : DE1411
+TELIASONERA-1
+TELIASONERA-1
+TELIASONERA-87 : DE1388
+TELIASONERA-87 : DE1406
