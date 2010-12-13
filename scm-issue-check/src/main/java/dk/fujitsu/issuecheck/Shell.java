@@ -9,7 +9,7 @@ package dk.fujitsu.issuecheck;
 import java.io.*;
 
 /**
- * @author Claus Brøndby Reimer (dencbr) / Fujitsu Denmark a|s
+ * @author Claus BrÃ¸ndby Reimer (dencbr) / Fujitsu Denmark a|s
  * @version $Revision: $ $Date: $
  */
 public class Shell {

@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Claus Brøndby Reimer (dencbr) / Fujitsu Denmark a|s
+ * @author Claus BrÃ¸ndby Reimer (dencbr) / Fujitsu Denmark a|s
  * @version $Revision: $ $Date: $
  */
 public class ServerThread extends Thread {
