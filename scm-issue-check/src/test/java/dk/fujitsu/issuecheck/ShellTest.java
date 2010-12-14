@@ -67,7 +67,6 @@ public class ShellTest {
     }
 
     @Test
-    @Ignore
     public void testError() throws Exception {
         Shell shell;
 
