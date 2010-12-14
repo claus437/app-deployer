@@ -49,15 +49,20 @@ public class ShellTest {
     }
 
     @Test
-    @Ignore
     public void testErrorStream() throws Exception {
         Shell shell;
-
+        String result;
         shell = new Shell();
 
         shell.execute(getArguments("echo", "Hello World", "1>&2"));
+        result = shell.getError().toString();
+
+        if ('\"' == result.charAt(0)) {
+            result = result.substring(1, result.length() - 1);
+        }
+
         Assert.assertEquals("", shell.getStandard().toString());
-        Assert.assertTrue(shell.getError().toString().startsWith("\"Hello World\""));
+        Assert.assertTrue("Hello World".equals(result));
         Assert.assertEquals(new Integer(0), shell.getExitValue());
     }
 
