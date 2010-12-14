@@ -10,43 +10,13 @@
     <name>scm-issue-check</name>
     <url>http://maven.apache.org</url>
 
-    <repositories>
-       <repository>
-           <id>central</id>
-           <name>libs</name>
-           <url>http://cia.ascore.denmark.nordic.x/artifactory/repo</url>
-       </repository>
-   </repositories>
+    <parent>
+        <groupId>dk.fujitsu</groupId>
+        <artifactId>internal-fujitsu-applications</artifactId>
+        <version>1.0</version>
+    </parent>
 
-   <pluginRepositories>
-       <pluginRepository>
-           <id>central</id>
-           <name>plugins</name>
-           <url>http://cia.ascore.denmark.nordic.x/artifactory/repo</url>
-       </pluginRepository>
 
-       <pluginRepository>
-           <snapshots/>
-           <id>snapshots</id>
-           <name>plugins-snapshot</name>
-           <url>http://cia.ascore.denmark.nordic.x/artifactory/plugins-snapshot</url>
-       </pluginRepository>
-   </pluginRepositories>
-
-    <distributionManagement>
-        <repository>
-            <id>cia</id>
-            <name>cia-releases</name>
-            <url>http://cia.ascore.denmark.nordic.x/artifactory/libs-release-local</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>cia</id>
-            <name>cia-snapshots</name>
-            <url>http://cia.ascore.denmark.nordic.x/artifactory/libs-snapshot-local</url>
-        </snapshotRepository>
-    </distributionManagement>
-                             
     <build>
         <plugins>
             <plugin>
