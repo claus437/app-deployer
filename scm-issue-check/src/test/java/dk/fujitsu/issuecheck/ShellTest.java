@@ -30,18 +30,22 @@ public class ShellTest {
     }
 
     @Test
-    @Ignore
     public void testStandardStream() throws Exception {
         Shell shell;
+        String result;
 
         shell = new Shell();
 
         shell.execute(getArguments("echo", "Hello World"));
-        Assert.assertEquals("\"Hello World\"" + System.getProperty("line.separator"), shell.getStandard().toString());
+        result = shell.getStandard().toString();
+
+        if ('\"' == result.charAt(0)) {
+            result = result.substring(1, result.length() - 1);
+        }
+
+        Assert.assertEquals("Hello World" + System.getProperty("line.separator"), result);
         Assert.assertEquals("", shell.getError().toString());
         Assert.assertEquals(new Integer(0), shell.getExitValue());
-
-
     }
 
     @Test
