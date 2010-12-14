@@ -18,18 +18,6 @@ import org.junit.Test;
 public class ShellTest {
 
     @Test
-    public void testExecute() throws Exception {
-        Shell shell;
-
-        shell = new Shell();
-        shell.execute(new String[]{"/bin/bash", "-c", "echo \"Hello World\""});
-
-        System.out.println("STD: " + shell.getStandard());
-        System.out.println("STD: " + shell.getError());
-        System.out.println("CODE:" + shell.getExitValue());
-    }
-
-    @Test
     public void testStandardStream() throws Exception {
         Shell shell;
         String result;
@@ -37,13 +25,11 @@ public class ShellTest {
         shell = new Shell();
 
         shell.execute(getArguments("echo", "Hello World"));
+
         result = shell.getStandard().toString();
+        result = result.replaceAll("\"", "").trim();
 
-        if ('\"' == result.charAt(0)) {
-            result = result.substring(1, result.length() - 1);
-        }
-
-        Assert.assertEquals("Hello World" + System.getProperty("line.separator"), result);
+        Assert.assertEquals("Hello World", result);
         Assert.assertEquals("", shell.getError().toString());
         Assert.assertEquals(new Integer(0), shell.getExitValue());
     }
@@ -55,14 +41,12 @@ public class ShellTest {
         shell = new Shell();
 
         shell.execute(getArguments("echo", "Hello World", "1>&2"));
-        result = shell.getError().toString();
 
-        if ('\"' == result.charAt(0)) {
-            result = result.substring(1, result.length() - 1);
-        }
+        result = shell.getError().toString();
+        result = result.replaceAll("\"", "").trim();
 
         Assert.assertEquals("", shell.getStandard().toString());
-        Assert.assertEquals("Hello World" + System.getProperty("line.separator"), result);
+        Assert.assertEquals("Hello World", result);
         Assert.assertEquals(new Integer(0), shell.getExitValue());
     }
 
