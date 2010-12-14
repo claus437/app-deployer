@@ -67,7 +67,12 @@ public class ShellTest {
             return args;
         }
 
-        return null;
+        args = new String[1 + arguments.length];
+        args[0] = "/bin/bash";
+
+        System.arraycopy(arguments, 0, args, 1, arguments.length);
+
+        return args;
     }
 }
 
