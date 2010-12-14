@@ -44,7 +44,6 @@ public class ShellTest {
     }
 
     @Test
-    @Ignore // TODO: fix problems on unix seems like error stream is empty
     public void testError() throws Exception {
         Shell shell;
 
@@ -69,7 +68,7 @@ public class ShellTest {
             return args;
         }
 
-        args = new String[2 + arguments.length];
+        args = new String[1 + arguments.length];
         args[0] = "/bin/bash";
 
         System.arraycopy(arguments, 0, args, 1, arguments.length);
