@@ -57,6 +57,7 @@ public class ShellTest {
 
     private String[] getArguments(String... arguments) throws Exception {
         String[] args;
+        StringBuffer buffer;
 
         if (System.getenv().containsKey("windir")) {
             args = new String[2 + arguments.length];
@@ -68,15 +69,17 @@ public class ShellTest {
             return args;
         }
 
-        System.out.println("GET ARGS");
-        args = new String[arguments.length + 2];
+        buffer = new StringBuffer();
+        buffer.append("\"");
+        for (String arg : arguments) {
+            buffer.append(arg);
+        }
+        buffer.replace(buffer.length() - 1, buffer.length(), "\"");
+        
+        args = new String[3];
         args[0] = "/bin/bash";
         args[1] = "-c";
-        args[2] = "";
-
-        for (String arg : arguments) {
-            args[2] += "\"" + arg + "\" ";
-        }
+        args[2] = buffer.toString();
 
         return args;
     }
