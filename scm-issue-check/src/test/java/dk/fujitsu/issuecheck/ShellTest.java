@@ -49,6 +49,8 @@ public class ShellTest {
         shell = new Shell();
 
         shell.execute(getArguments("no_such_command"));
+        System.out.println("\"" + shell.getError().toString() + "\"");
+        System.out.println("SHELL: " + shell.getError().toString().isEmpty());
         Assert.assertEquals("", shell.getStandard().toString());
         Assert.assertFalse(shell.getError().toString().isEmpty());
         Assert.assertTrue(shell.getExitValue() != 0);

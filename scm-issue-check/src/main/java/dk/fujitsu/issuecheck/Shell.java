@@ -35,6 +35,8 @@ public class Shell {
         new StreamGobbler(process.getInputStream(), standard).start();
         new StreamGobbler(process.getErrorStream(), error).start();
 
+        System.out.println("BUFFERS " + standard + " " + error);
+        
         process.waitFor();
 
         exitValue = process.exitValue();
