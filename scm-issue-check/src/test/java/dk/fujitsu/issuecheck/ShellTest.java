@@ -62,7 +62,7 @@ public class ShellTest {
         }
 
         Assert.assertEquals("", shell.getStandard().toString());
-        Assert.assertTrue("Hello World".equals(result));
+        Assert.assertEquals("Hello World" + System.getProperty("line.separator"), result);
         Assert.assertEquals(new Integer(0), shell.getExitValue());
     }
 
