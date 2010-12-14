@@ -18,6 +18,19 @@ import org.junit.Test;
 public class ShellTest {
 
     @Test
+    public void testExecute() throws Exception {
+        Shell shell;
+
+        shell = new Shell();
+        shell.execute(new String[]{"/bin/bash", "-c", "echo \"Hello World\""});
+
+        System.out.println("STD: " + shell.getStandard());
+        System.out.println("STD: " + shell.getError());
+        System.out.println("CODE:" + shell.getExitValue());
+    }
+
+    @Test
+    @Ignore
     public void testStandardStream() throws Exception {
         Shell shell;
 
@@ -32,6 +45,7 @@ public class ShellTest {
     }
 
     @Test
+    @Ignore
     public void testErrorStream() throws Exception {
         Shell shell;
 
@@ -44,6 +58,7 @@ public class ShellTest {
     }
 
     @Test
+    @Ignore
     public void testError() throws Exception {
         Shell shell;
 
