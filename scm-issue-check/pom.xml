@@ -29,6 +29,30 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Specification-Vendor>Fujitsu</Specification-Vendor>
+                            <Implementation-Vendor>Fujitsu</Implementation-Vendor>
+                            <Implementation-Title>SCM Issue Check</Implementation-Title>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Build-Date>${maven.build.timestamp}</Build-Date>
+                            <Main-Class>dk.fujitsu.issuecheck.Hook</Main-Class>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -59,7 +83,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
     <profiles>
         <profile>
