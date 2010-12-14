@@ -69,7 +69,7 @@ public class ShellTest {
         }
 
         System.out.println("GET ARGS");
-        args = new String[arguments.length + 1];
+        args = new String[arguments.length + 2];
         args[0] = "/bin/bash";
         args[1] = "-c";
 
