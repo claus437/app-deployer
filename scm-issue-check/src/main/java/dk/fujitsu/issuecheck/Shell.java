@@ -20,6 +20,8 @@ public class Shell {
 
 
     public void execute(String[] args) throws IOException, InterruptedException {
+        StreamGobbler std;
+        StreamGobbler err;
         Runtime runtime;
         Process process;
 
@@ -32,12 +34,17 @@ public class Shell {
         error = new StringBuffer();
 
 
-        new StreamGobbler(process.getInputStream(), standard).start();
-        new StreamGobbler(process.getErrorStream(), error).start();
+        std = new StreamGobbler(process.getInputStream(), standard);
+        err = new StreamGobbler(process.getErrorStream(), error);
 
-        System.out.println("BUFFERS " + standard + " " + error);
-        
+        std.start();
+        err.start();
+
         process.waitFor();
+
+        while (std.isAlive() || err.isAlive()) {
+            Thread.sleep(10);
+        }
 
         exitValue = process.exitValue();
     }
