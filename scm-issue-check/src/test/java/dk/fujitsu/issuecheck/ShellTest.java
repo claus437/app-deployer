@@ -73,6 +73,7 @@ public class ShellTest {
         buffer.append("\"");
         for (String arg : arguments) {
             buffer.append(arg);
+            buffer.append(" ");
         }
         buffer.replace(buffer.length() - 1, buffer.length(), "\"");
         
