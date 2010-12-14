@@ -70,12 +70,11 @@ public class ShellTest {
         }
 
         buffer = new StringBuffer();
-        buffer.append("\"");
         for (String arg : arguments) {
             buffer.append(arg);
             buffer.append(" ");
         }
-        buffer.replace(buffer.length() - 1, buffer.length(), "\"");
+        buffer.deleteCharAt(buffer.length());
         
         args = new String[3];
         args[0] = "/bin/bash";
