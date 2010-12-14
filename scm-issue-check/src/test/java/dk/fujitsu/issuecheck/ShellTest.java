@@ -72,7 +72,7 @@ public class ShellTest {
         args[0] = "/bin/bash";
         args[1] = "-c";
 
-        System.arraycopy(arguments, 0, args, 1, arguments.length);
+        System.arraycopy(arguments, 0, args, 2, arguments.length);
 
         return args;
     }
