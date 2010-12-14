@@ -72,9 +72,10 @@ public class ShellTest {
         args = new String[arguments.length + 2];
         args[0] = "/bin/bash";
         args[1] = "-c";
+        args[2] = "";
 
         for (String arg : arguments) {
-            args[2] += "\"" + arg + "\"";
+            args[2] += "\"" + arg + "\" ";
         }
 
         return args;
