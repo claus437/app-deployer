@@ -74,12 +74,11 @@ public class ShellTest {
             buffer.append(arg);
             buffer.append(" ");
         }
-        buffer.deleteCharAt(buffer.length());
         
         args = new String[3];
         args[0] = "/bin/bash";
         args[1] = "-c";
-        args[2] = buffer.toString();
+        args[2] = buffer.toString().substring(0, buffer.length() - 1);
 
         return args;
     }
