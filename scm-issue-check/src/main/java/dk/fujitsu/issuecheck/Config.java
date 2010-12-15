@@ -68,6 +68,19 @@ public class Config {
     }
 
     public static void out(String message) {
+        if (message == null) {
+            return;
+        }
+        
         System.out.println(message);
     }
+
+    public static void err(String message) {
+        if (message == null) {
+            return;
+        }
+
+        System.out.println(message);
+    }
+
 }

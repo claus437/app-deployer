@@ -14,11 +14,18 @@ public class Hook {
 
     public static void main(String[] args) {
         CommitCheck commitCheck;
+        int status;
 
         commitCheck = new CommitCheck(args);
         commitCheck.execute();
 
-        Config.out(commitCheck.getMessage());
-        Config.exit(commitCheck.getStatus());
+        status = commitCheck.getStatus();
+        if (status > 0) {
+            Config.err(commitCheck.getMessage());
+        } else {
+            Config.out(commitCheck.getMessage());
+        }
+
+        Config.exit(status);
     }
 }

@@ -50,6 +50,14 @@ public class HookTest {
         flow.add(new StubListener() {
             @Override
             public void invoked(StubEvent stubEvent) {
+                Assert.assertEquals("getStatus", stubEvent.getMethodName());
+                stubEvent.setResult(0);
+            }
+        });
+        
+        flow.add(new StubListener() {
+            @Override
+            public void invoked(StubEvent stubEvent) {
                 Assert.assertEquals("getMessage", stubEvent.getMethodName());
                 stubEvent.setResult("Hello World");
             }
@@ -66,16 +74,8 @@ public class HookTest {
         flow.add(new StubListener() {
             @Override
             public void invoked(StubEvent stubEvent) {
-                Assert.assertEquals("getStatus", stubEvent.getMethodName());
-                stubEvent.setResult(1);
-            }
-        });
-        
-        flow.add(new StubListener() {
-            @Override
-            public void invoked(StubEvent stubEvent) {
                 Assert.assertEquals("exit", stubEvent.getMethodName());
-                Assert.assertEquals(1, stubEvent.getInt(1));
+                Assert.assertEquals(0, stubEvent.getInt(1));
             }
         });
 

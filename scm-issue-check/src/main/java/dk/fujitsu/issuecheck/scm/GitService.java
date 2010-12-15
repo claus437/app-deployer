@@ -33,10 +33,10 @@ public class GitService implements ScmService {
         try {
             shell.execute(new String[]{
                     Config.get("scm.git.bin"),
-                    "--git-dir=" + Config.get("scm.git.dir") + "\\.git",
-                    "--work-tree=" + Config.get("scm.git.dir"),
+                    // "--git-dir=" + Config.get("scm.git.dir") + "\\.git",
+                    // "--work-tree=" + Config.get("scm.git.dir"),
                     "log",
-                    "--pretty=format:%b",
+                    "--pretty=format:%s",
                     arguments[1] + ".." + arguments[2]});
         } catch (Throwable x) {
             throw new RuntimeException("unable to execute git, " + x.getMessage(), x);

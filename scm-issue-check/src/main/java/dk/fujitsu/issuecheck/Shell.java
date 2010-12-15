@@ -7,7 +7,6 @@
 package dk.fujitsu.issuecheck;
 
 import java.io.*;
-import java.util.Arrays;
 
 /**
  * @author Claus Brøndby Reimer (dencbr) / Fujitsu Denmark a|s
@@ -25,7 +24,6 @@ public class Shell {
         Runtime runtime;
         Process process;
 
-        System.out.println("ARGS: " + Arrays.asList(args));
         runtime = Runtime.getRuntime();
         process = runtime.exec(args);
 

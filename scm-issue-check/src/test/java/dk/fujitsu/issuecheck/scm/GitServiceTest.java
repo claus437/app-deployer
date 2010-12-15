@@ -164,26 +164,6 @@ public class GitServiceTest {
             }
         });
 
-        flow.add(new StubListener() {
-            @Override
-            public void invoked(StubEvent stubEvent) {
-                Assert.assertEquals("get", stubEvent.getMethodName());
-                Assert.assertEquals("scm.git.dir", stubEvent.getObject(1));
-
-                stubEvent.setResult("dir");
-            }
-        });
-
-        flow.add(new StubListener() {
-            @Override
-            public void invoked(StubEvent stubEvent) {
-                Assert.assertEquals("get", stubEvent.getMethodName());
-                Assert.assertEquals("scm.git.dir", stubEvent.getObject(1));
-
-                stubEvent.setResult("dir");
-            }
-        });
-
         if ("UNTIL EXECUTE".equals(name)) {
             return flow;
         }
@@ -194,11 +174,9 @@ public class GitServiceTest {
                 Assert.assertEquals("execute", stubEvent.getMethodName());
 
                 Assert.assertEquals("bin", ((String[])stubEvent.getObject(1))[0]);
-                Assert.assertEquals("--git-dir=dir\\.git", ((String[])stubEvent.getObject(1))[1]);
-                Assert.assertEquals("--work-tree=dir", ((String[])stubEvent.getObject(1))[2]);
-                Assert.assertEquals("log", ((String[])stubEvent.getObject(1))[3]);
-                Assert.assertEquals("--pretty=format:%b", ((String[])stubEvent.getObject(1))[4]);
-                Assert.assertEquals("old..new", ((String[])stubEvent.getObject(1))[5]);
+                Assert.assertEquals("log", ((String[])stubEvent.getObject(1))[1]);
+                Assert.assertEquals("--pretty=format:%s", ((String[])stubEvent.getObject(1))[2]);
+                Assert.assertEquals("old..new", ((String[])stubEvent.getObject(1))[3]);
             }
         });
 

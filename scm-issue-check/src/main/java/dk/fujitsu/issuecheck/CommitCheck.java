@@ -42,19 +42,19 @@ public class CommitCheck {
             issue = getIssue(message);
 
             if (issue == null) {
-                this.message = "message:\n" + message + "\n!> has no issue number";
+                this.message = "commit message:\n" + message + "\n>> has no issue number";
                 status = 1;
                 return;
             }
 
             if (!ims.isIssue(issue)) {
-                this.message = "message:\n" + message + "\n!> contains unknown issue id \"" + issue + "\"";
+                this.message = "commit message:\n" + message + "\n>> contains unknown issue id \"" + issue + "\"";
                 status = 2;
                 return;
             }
 
             if (!ims.isIssueOpen(issue)) {
-                this.message = "message:\n" + message + "\n!> refers to an issue where no commits are allowed";
+                this.message = "commit message:\n" + message + "\n>> refers to an issue where no commits are allowed";
                 status = 3;
                 return;
             }
