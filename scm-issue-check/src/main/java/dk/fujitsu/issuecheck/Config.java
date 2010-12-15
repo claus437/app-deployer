@@ -49,6 +49,9 @@ public class Config {
 
 
     public static String get(String key) {
+        if (System.getProperty(key) != null) {
+            return key;
+        }
         return PROPERTIES.getProperty(key);
     }
 

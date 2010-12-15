@@ -42,14 +42,10 @@
 
                 <configuration>
                     <archive>
-                        <manifestEntries>
-                            <Specification-Vendor>Fujitsu</Specification-Vendor>
-                            <Implementation-Vendor>Fujitsu</Implementation-Vendor>
-                            <Implementation-Title>SCM Issue Check</Implementation-Title>
-                            <Implementation-Version>${project.version}</Implementation-Version>
-                            <Build-Date>${maven.build.timestamp}</Build-Date>
-                            <Main-Class>dk.fujitsu.issuecheck.Hook</Main-Class>
-                        </manifestEntries>
+                        <manifest>
+                              <addClasspath>true</addClasspath>
+                              <mainClass>dk.fujitsu.issuecheck.Hook</mainClass>
+                        </manifest>
                     </archive>
                 </configuration>
             </plugin>
