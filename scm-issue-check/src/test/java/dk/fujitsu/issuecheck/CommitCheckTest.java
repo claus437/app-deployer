@@ -109,7 +109,7 @@ public class CommitCheckTest {
         test.execute();
 
         Assert.assertEquals(1, test.getStatus());
-        Assert.assertEquals("message:\n" + issues.get(0) + "\n!> has no issue number", test.getMessage());
+        Assert.assertEquals("commit message:\n" + issues.get(0) + "\n>> has no issue number <<", test.getMessage());
 
         Assert.assertEquals(true, flow.isComplete());
     }
@@ -127,7 +127,7 @@ public class CommitCheckTest {
         test.execute();
 
         Assert.assertEquals(2, test.getStatus());
-        Assert.assertEquals("message:\n" + issues.get(0) + "\n!> contains unknown issue id \"" + issue + "\"", test.getMessage());
+        Assert.assertEquals("commit message:\n" + issues.get(0) + "\n>> contains unknown issue id \"" + issue + "\" <<", test.getMessage());
 
         Assert.assertEquals(true, flow.isComplete());
     }
@@ -145,7 +145,7 @@ public class CommitCheckTest {
         test.execute();
 
         Assert.assertEquals(3, test.getStatus());
-        Assert.assertEquals("message:\n" + issues.get(0) + "\n!> refers to an issue where no commits are allowed", test.getMessage());
+        Assert.assertEquals("commit message:\n" + issues.get(0) + "\n>> refers to an issue where no commits are allowed <<", test.getMessage());
 
         Assert.assertEquals(true, flow.isComplete());
 
