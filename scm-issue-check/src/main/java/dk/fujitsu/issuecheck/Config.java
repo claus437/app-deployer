@@ -49,10 +49,14 @@ public class Config {
 
 
     public static String get(String key) {
-        if (System.getProperty(key) != null) {
-            return key;
+        String value;
+
+        value = System.getProperty(key);
+        if (value == null) {
+            value = PROPERTIES.getProperty(key);
         }
-        return PROPERTIES.getProperty(key);
+
+        return value;
     }
 
     public static void set(String key, String value) {
