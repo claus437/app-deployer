@@ -6,13 +6,17 @@
  */
 package dk.fujitsu.issuecheck;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
+import java.util.Arrays;
 
 /**
  * @author Claus Brøndby Reimer (dencbr) / Fujitsu Denmark a|s
  * @version $Revision: $ $Date: $
  */
 public class Shell {
+    private static final Logger LOGGER = Logger.getLogger(Shell.class);
     private StringBuffer standard;
     private StringBuffer error;
     private Integer exitValue;
@@ -24,6 +28,7 @@ public class Shell {
         Runtime runtime;
         Process process;
 
+        LOGGER.debug("executing " + Arrays.asList(args));
         runtime = Runtime.getRuntime();
         process = runtime.exec(args);
 
@@ -40,9 +45,13 @@ public class Shell {
 
         process.waitFor();
 
+        LOGGER.debug("process executed");
+
         while (std.isAlive() || err.isAlive()) {
             Thread.sleep(10);
         }
+
+        LOGGER.debug("stream gobblers done - std:" + standard.toString() + " err: " + err.toString());
 
         exitValue = process.exitValue();
     }
@@ -83,6 +92,8 @@ public class Shell {
             } catch (IOException x) {
                 System.out.println("failed reading line " + x.getMessage());
             }
+
+            LOGGER.debug("read " + buffer.toString());
         }
     }
 }

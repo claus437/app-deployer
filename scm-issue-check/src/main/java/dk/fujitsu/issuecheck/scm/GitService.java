@@ -40,8 +40,10 @@ public class GitService implements ScmService {
                     Config.get("scm.git.bin"),
                     "log",
                     "--pretty=format:%s",
-                    arguments[1] + ".." + arguments[2]});
-        } catch (Throwable x) {
+                    arguments[1],
+                    "..",
+                    arguments[2]});
+        } catch (Throwable x) {             
             throw new RuntimeException("unable to execute git, " + x.getMessage(), x);
         }
 

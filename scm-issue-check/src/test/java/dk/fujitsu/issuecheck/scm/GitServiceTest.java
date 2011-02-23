@@ -176,7 +176,9 @@ public class GitServiceTest {
                 Assert.assertEquals("bin", ((String[])stubEvent.getObject(1))[0]);
                 Assert.assertEquals("log", ((String[])stubEvent.getObject(1))[1]);
                 Assert.assertEquals("--pretty=format:%s", ((String[])stubEvent.getObject(1))[2]);
-                Assert.assertEquals("old..new", ((String[])stubEvent.getObject(1))[3]);
+                Assert.assertEquals("old", ((String[])stubEvent.getObject(1))[3]);
+                Assert.assertEquals("..", ((String[])stubEvent.getObject(1))[4]);
+                Assert.assertEquals("new", ((String[])stubEvent.getObject(1))[5]);
             }
         });
 

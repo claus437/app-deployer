@@ -1,3 +1,18 @@
 Go to your git server, and into the hook directory
 
-vi update pre-receive
+copy this little update script to hook directory of your remote repository
+
+#!/bin/bash
+
+while read oldvalue newvalue refname; do
+    echo "`date` `pwd` $oldvalue $newvalue $refname\n" >> /opt/git/logs/ticket-check.log
+
+    /opt/git/jre1.6.0_23/bin/java     \
+        -Dscm.git.bin=/usr/bin/git    \
+        -Dscm.git.dir=`pwd`           \
+        -jar /opt/git/ScmIssueCheck/scm-issue-check-1.0-SNAPSHOT.jar $oldvalue $newvalue $refname
+done;
+
+
+enable excute permission
+
