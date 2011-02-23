@@ -42,11 +42,11 @@ public class CommitCheck {
         
         for (String message : messages) {
             if (message.startsWith("Merge branch")) {
-                return;
+                continue;
             }
 
             if (message.startsWith("NO ISSUE")) {
-                return;
+                continue;
             }
             
             issue = getIssue(message);
