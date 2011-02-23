@@ -41,6 +41,14 @@ public class CommitCheck {
         messages = scm.getMessages(arguments);
         
         for (String message : messages) {
+            if (message.startsWith("Merge branch")) {
+                return;
+            }
+
+            if (message.startsWith("NO ISSUE")) {
+                return;
+            }
+            
             issue = getIssue(message);
 
             LOGGER.debug("searching for issue " + issue);
