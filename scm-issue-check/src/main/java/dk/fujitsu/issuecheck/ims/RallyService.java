@@ -7,6 +7,7 @@
 package dk.fujitsu.issuecheck.ims;
 
 import dk.fujitsu.issuecheck.Config;
+import org.apache.log4j.Logger;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
@@ -25,6 +26,7 @@ import java.util.Map;
  * @version $Revision: $ $Date: $
  */
 public class RallyService implements ImsService {
+    private static final Logger LOGGER = Logger.getLogger(RallyService.class);
     private Map<String, Document> cache;
 
     public RallyService() {
@@ -76,8 +78,12 @@ public class RallyService implements ImsService {
         Document document;
         String login;
 
+        LOGGER.debug("fetching issue " + type + " " + name);
+
         address = Config.get("ims.rally.service") + "/" + type + "?query=(FormattedID%20=%20" + name + ")&fetch=true";
         login = "Basic " + new BASE64Encoder().encode((Config.get("ims.rally.user").trim() + ":" + Config.get("ims.rally.password")).trim().getBytes());
+
+        LOGGER.debug("fetching issue by " + address);
 
         try {
             url = new URL(address);
@@ -96,6 +102,7 @@ public class RallyService implements ImsService {
 
         try {
             document = reader.read(connection.getInputStream());
+            LOGGER.debug("rally replied " + document.asXML());
         } catch (IOException x) {
             throw new RuntimeException("error reading reply from " + Config.get("ims.rally.service"), x);
         } catch (DocumentException x) {
@@ -103,11 +110,13 @@ public class RallyService implements ImsService {
         }
 
         if (Integer.parseInt(document.selectSingleNode("/QueryResult/TotalResultCount").getText()) == 0) {
+            LOGGER.debug("rally had no matching issues for " + type + " " + name);
             document = null;
         }
 
         // Rally is acting a little funny, searching for DE999 will eventually also return TA999
         if (document != null && !name.equals(document.selectSingleNode("/QueryResult/Results/Object/FormattedID").getText())) {
+            LOGGER.debug("rally returned incorrect issue for " + type + " " + name + " doesn't matter we just ignore it");
             document = null;
         }
 

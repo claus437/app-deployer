@@ -9,6 +9,7 @@ package dk.fujitsu.issuecheck.scm;
 
 import dk.fujitsu.issuecheck.Config;
 import dk.fujitsu.issuecheck.Shell;
+import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,23 +19,25 @@ import java.util.List;
  * @version $Revision: $ $Date: $
  */
 public class GitService implements ScmService {
+    private static final Logger LOGGER = Logger.getLogger(GitService.class);
 
     @Override
     public List<String> getMessages(String... arguments) {
         Shell shell;
         String[] entries;
+        String messages;
 
         if (arguments.length != 3) {
             throw new RuntimeException("getMessages takes 3 arguments: object reference, old revision and new revision");
         }
-        
+
+        LOGGER.debug("fetching messages for " + Arrays.asList(arguments));
+
         shell = new Shell();
 
         try {
             shell.execute(new String[]{
                     Config.get("scm.git.bin"),
-                    // "--git-dir=" + Config.get("scm.git.dir") + "\\.git",
-                    // "--work-tree=" + Config.get("scm.git.dir"),
                     "log",
                     "--pretty=format:%s",
                     arguments[1] + ".." + arguments[2]});
@@ -46,7 +49,10 @@ public class GitService implements ScmService {
             throw new RuntimeException("unable to retrieve git log for package " + Arrays.asList(arguments) + " - stdout: " + shell.getStandard() + " errout: " + shell.getError());
         }
 
-        entries = shell.getStandard().toString().split(System.getProperty("line.separator"));
+        messages = shell.getStandard().toString();
+
+        LOGGER.debug("messages retrieved " + messages);
+        entries = messages.split(System.getProperty("line.separator"));
 
         return Arrays.asList(entries);
     }

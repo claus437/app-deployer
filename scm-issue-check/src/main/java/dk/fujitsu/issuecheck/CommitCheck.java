@@ -8,6 +8,7 @@ package dk.fujitsu.issuecheck;
 
 import dk.fujitsu.issuecheck.ims.ImsService;
 import dk.fujitsu.issuecheck.scm.ScmService;
+import org.apache.log4j.Logger;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -18,6 +19,7 @@ import java.util.regex.Pattern;
  * @version $Revision: $ $Date: $
  */
 public class CommitCheck {
+    private static final Logger LOGGER = Logger.getLogger(CommitCheck.class);
     private String[] arguments;
     private String message;
     private int status;
@@ -41,6 +43,8 @@ public class CommitCheck {
         for (String message : messages) {
             issue = getIssue(message);
 
+            LOGGER.debug("searching for issue " + issue);
+
             if (issue == null) {
                 this.message = "commit message:\n" + message + "\n>> has no issue number <<";
                 status = 1;
@@ -58,6 +62,8 @@ public class CommitCheck {
                 status = 3;
                 return;
             }
+
+            LOGGER.debug("accepted " + message);
         }
     }
 
