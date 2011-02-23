@@ -51,7 +51,7 @@ public class GitServiceTest {
         flow.start();
 
         service = new GitService();
-        gitMessages = service.getMessages("refs", "old", "new");
+        gitMessages = service.getMessages("old", "new", "refs");
 
         Assert.assertArrayEquals(messages.toArray(), gitMessages.toArray());
         Assert.assertTrue(flow.isComplete());
@@ -83,7 +83,7 @@ public class GitServiceTest {
 
         service = new GitService();
         try {
-            service.getMessages("refs", "old", "new");
+            service.getMessages("old", "new", "refs");
         } catch (RuntimeException x) {
             Assert.assertTrue(flow.isComplete());
             Assert.assertEquals("unable to execute git, command not found", x.getMessage());
@@ -132,10 +132,10 @@ public class GitServiceTest {
 
         service = new GitService();
         try {
-            service.getMessages("refs", "old", "new");
+            service.getMessages("old", "new", "refs");
         } catch (RuntimeException x) {
             Assert.assertTrue(flow.isComplete());
-            Assert.assertEquals("unable to retrieve git log for package [refs, old, new] - stdout: stdout errout: error", x.getMessage());
+            Assert.assertEquals("unable to retrieve git log for package [old, new, refs] - stdout: stdout errout: error", x.getMessage());
             return;
         }
 
@@ -176,9 +176,7 @@ public class GitServiceTest {
                 Assert.assertEquals("bin", ((String[])stubEvent.getObject(1))[0]);
                 Assert.assertEquals("log", ((String[])stubEvent.getObject(1))[1]);
                 Assert.assertEquals("--pretty=format:%s", ((String[])stubEvent.getObject(1))[2]);
-                Assert.assertEquals("old", ((String[])stubEvent.getObject(1))[3]);
-                Assert.assertEquals("..", ((String[])stubEvent.getObject(1))[4]);
-                Assert.assertEquals("new", ((String[])stubEvent.getObject(1))[5]);
+                Assert.assertEquals("old..new", ((String[])stubEvent.getObject(1))[3]);
             }
         });
 
