@@ -1,0 +1,150 @@
+body {
+    font-family: arial, serif;
+    font-size: 12px;
+    color: #505050;
+    background: #FFFFFF url("../img/background.png") no-repeat top center;
+}
+
+#content {
+    width: 728px;
+    margin: 120px auto 0 auto;
+}
+
+#server {
+    width: 150px;
+
+}
+
+div.selection-box {
+    width: 100%;
+    height: 70px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+    border: 1px solid #505050;
+}
+
+input.server-search {
+    border: 1px solid #505050;
+    width: 120px;
+    display: block;
+    padding: 3px;
+}
+
+div.server-selection {
+    border: 1px solid #505050;
+    width: 120px;
+    margin: 2px 0 1px 0;
+    padding: 3px;
+}
+
+input.server-load {
+    clear: both;
+    display: block;
+    float: right;
+    width: auto;
+    padding: 2px;
+}
+
+div.panel-server-search {
+    width: 129px;
+    float: right;
+    clear: both;
+}
+
+input {
+    font-family: arial, serif;
+    font-size: 12px;
+    color: #505050;
+}
+
+h3 {
+    margin: 0 0 6px 0;
+    font-size: 16px;
+}
+
+th {
+    text-align: left;
+    padding: 3px 7px 3px 7px;
+    text-decoration: underline;
+}
+
+th:first-child {
+    padding-left: 0;
+}
+
+td {
+    text-align: left;
+    padding: 0 7px 0 7px;
+    color: #505050;
+}
+
+td:first-child {
+    padding-left: 0;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+tr.input-row td {
+    padding: 0 3px 0 6px;
+    background-color: transparent;
+    border-left: 1px solid #505050;
+}
+
+tr.input-row td:first-child {
+    border: 0;
+}
+
+tr.input-row td input {
+    background-color: transparent;
+    border: 0;
+}
+
+tr.schedule td input {
+    width: 40px;
+}
+
+
+
+.outer-border {
+    border: 1px solid #909090;
+}
+
+.inner-border {
+    border: 1px solid white;
+    padding: 10px;
+}
+
+h3 {
+    clear: both;
+    padding-top: 30px;
+}
+
+
+div.server-list {
+    float: right;
+}
+
+
+
+table.configuration {
+    float: left; width: 300px;
+}
+
+table.configuration tr td:first-child {
+    padding: 1px 10px 1px 0;
+    font-weight: bold;
+    width: 0;
+}
+
+table.configuration tr td {
+    padding: 1px 10px 1px 10px;
+    font-weight: normal;
+}
+
+div.automatic-deployment table {
+    margin-top: 20px;
+}

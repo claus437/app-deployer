@@ -1,0 +1,24 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="app-deployer:war exploded">
+    <output-path>$PROJECT_DIR$/target/app-deployer-1.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="app-deployer/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="app-deployer" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: com.sun.facelets:jsf-facelets:1.1.14" />
+          <element id="library" level="project" name="Maven: org.ajax4jsf:ajax4jsf:1.1.1" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.0.4" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.7.0" />
+          <element id="library" level="project" name="Maven: commons-digester:commons-digester:1.8" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2" />
+          <element id="library" level="project" name="Maven: javax.faces:jsf-api:1.2_09" />
+          <element id="library" level="project" name="Maven: javax.faces:jsf-impl:1.2_09" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

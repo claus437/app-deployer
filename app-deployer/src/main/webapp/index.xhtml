@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"
+        [
+            <!ENTITY nbsp "&#x00A0;">
+        ]>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+	    xmlns:ui="http://java.sun.com/jsf/facelets"
+	    xmlns:f="http://java.sun.com/jsf/core"
+	    xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:a4j="https://ajax4jsf.dev.java.net/ajax">
+
+    <head>
+        <link rel="stylesheet" href="css/default.css" type="text/css" media="screen"/>
+        <title>B i j o u x</title>
+        <script type="text/javascript">
+
+            function VersionNavigator(inputField, versions) {
+                this.inputField = document.getElementById(inputField);
+                this.versions = versions;
+                this.inputField.navigator = this;
+                this.setSuggestion(this.versions[0], "");
+
+                this.inputField.onkeydown = function(e) {
+                    key = e == null ? event.keyCode : e.keyCode;
+
+                    if (key == 38) {
+                        this.navigator.backward(this.value);
+                        return;
+                    }
+
+                    if (key == 40) {
+                        this.navigator.forward(this.value);
+                        return;
+                    }
+
+                    if (key == 13) {
+                        if (this.navigator.getSuggestion() != "") {
+                            this.value = this.navigator.getSuggestion();
+                        }
+                    }
+                };
+
+                this.inputField.onkeyup = function(e) {
+                    key = e == null ? event.keyCode : e.keyCode;
+
+                    if (key == 38 || key == 40) {
+                        return;
+                    }
+
+                     for (var i = 0; i &lt; this.navigator.versions.length; i++) {
+                        if (this.navigator.versions[i].match("^" + this.value)) {
+                            this.navigator.setSuggestion(this.navigator.versions[i], this.value);
+                            return;
+                        }
+                    }
+
+                    this.navigator.setSuggestion("");
+                }
+            }
+
+            VersionNavigator.create = function(versions) {
+
+                new VersionNavigator("main:version", versions);
+            };
+
+            VersionNavigator.prototype.backward = function(value) {
+                var index;
+
+                current = this.getSuggestion();
+                index = this.versions.indexOf(current);
+                if (index > 0 &amp;&amp; this.versions[index - 1].match("^" + value)) {
+                    this.setSuggestion(this.versions[index - 1], value);
+                }
+            };
+
+            VersionNavigator.prototype.forward = function(value) {
+                var index;
+
+                current = this.getSuggestion();
+                index = this.versions.indexOf(current);
+                if (index &lt; this.versions.length - 1 &amp;&amp; this.versions[index + 1].match("^" + value)) {
+                    this.setSuggestion(this.versions[index + 1], value);
+                }
+            };
+
+            VersionNavigator.prototype.setVersions = function(versions) {
+                this.versions = new Array();
+            };
+
+            VersionNavigator.prototype.getSuggestion = function() {
+                return this.suggestion;
+            };
+
+            VersionNavigator.prototype.setSuggestion = function(suggestion, actual) {
+                var html;
+
+                html = "&lt;span style='color: white;'>" + suggestion.substring(0, actual.length) + "&lt;/span>" + suggestion.substring(actual.length, suggestion.length);
+                document.getElementById("suggestion").innerHTML = html;
+                this.suggestion = suggestion;
+            };
+
+
+
+
+
+            function myScript(data) {
+               // document.getElementById("out").innerHTML = data;
+            }
+
+
+
+
+            function init() {
+                v = new Array();
+                v[0] = "dencbr-04122011.123011";
+                v[1] = "denasa-04122011.123012";
+                v[2] = "1.2.1";
+                v[3] = "1.2.2";
+                v[4] = "1.2.3";
+                v[5] = "1.2-SNAPSHOT";
+                v[6] = "1.3.0";
+                v[7] = "1.3.1";
+                v[8] = "1.3-SNAPSHOT";
+
+
+                v.reverse();
+
+                VersionNavigator.create(v);
+                //new VersionNavigator()
+                //initVersionNavigator();
+            }
+        </script>
+    </head>
+    <body onload="init()">
+
+            <h:form id="main">
+                <div id="content">
+
+
+                    <div class="server-list outer-border">
+                        <div class="inner-border">
+                            <table>
+                                <thead><tr><th>Application</th><th>Version</th><th>Deployed</th><th>Status</th></tr></thead>
+                                <tbody>
+                                    <ui:repeat value="#{Main.configItems}" var="item">
+                                        <tr>
+                                            <td><a4j:commandLink actionListener="#{Main.onApplicationSelect}" value="#{item.applicationName}" reRender="main"/></td>
+                                            <td>#{item.version}</td>
+                                            <td>#{item.deployed}</td>
+                                            <td>#{item.status}</td>
+                                        </tr>
+                                    </ui:repeat>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <table class="configuration">
+                        <tr><td>Status</td><td>#{Main.config.status}</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td>Artifact</td><td>#{Main.config.artifact}</td></tr>
+                        <tr><td>Version</td><td>#{Main.config.version}</td></tr>
+                        <tr><td colspan="2">&nbsp;</td></tr>
+                        <tr><td>Context</td><td>#{Main.config.context}</td></tr>
+                        <tr><td>Server</td><td>#{Main.config.server}</td></tr>
+                        <tr><td>Home</td><td>#{Main.config.home}</td></tr>
+                        <tr><td>User</td><td>#{Main.config.user}</td></tr>
+                    </table>
+
+                    <h3>Instant deployment</h3>
+                    <!--<img src="img/disabled.png" style="position: absolute; height: 34px; width: 727px"/>-->
+                    <div class="outer-border">
+                        <div class="inner-border">
+
+                            <table>
+                                <tr>
+                                    <td>Version</td>
+                                    <td>
+                                        <div id="suggestion" style="border-top: 1px solid transparent; padding: 4px 0 0 5px; font-family: arial, serif; font-size: 12px; color:#CCCCCC; z-index: -1; position:absolute; background-color: white; display: block; width: 130px; height: 18px">12</div><h:inputText id="version" value="#{Main.version}" style="margin: 0; background-color: transparent; border: 1px solid #505050; padding: 3px"/>
+                                    </td>
+                                    <td>
+                                        <a4j:commandLink actionListener="#{Main.onDeploy}" value="deploy"/>
+                                    </td>
+                                    <td>&nbsp;</td>
+                                    <td><b>Quick picks:</b></td>
+                                    <td><b>latest on branch:</b></td>
+                                    <td><a4j:commandLink actionListener="#{Main.onPick}" value="#{Main.config.latestOnBranch}" reRender="version"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">&nbsp;</td>
+                                    <td><b>latest official:</b></td>
+                                    <td><a4j:commandLink actionListener="#{Main.onPick}" value="#{Main.config.latestOfficial}" reRender="version"/></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">&nbsp;</td>
+                                    <td><b>latest</b></td>
+                                    <td><a4j:commandLink actionListener="#{Main.onPick}" value="#{Main.config.latest}" reRender="version"/></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <h3>Automatic deployment</h3>
+                    <div class="outer-border automatic-deployment" id="someComponent">
+                        <div class="inner-border">
+                            <h:selectBooleanCheckbox value="#{Main.config.scheduled}"/> Scheduled
+                            <table>
+                                <tr><th>Minute</th><th>Hour</th><th>DOM</th><th>Month</th><th>DOW</th><th >Job</th></tr>
+                                <ui:repeat value="#{Main.schedule.jobs}" var="job">
+                                    <tr class="input-row schedule">
+                                        <td><h:inputText value="#{job.minute}"/></td>
+                                        <td><h:inputText value="#{job.hour}"/></td>
+                                        <td><h:inputText value="#{job.dom}"/></td>
+                                        <td><h:inputText value="#{job.month}"/></td>
+                                        <td><h:inputText value="#{job.dow}"/></td>
+                                        <td><h:inputText value="#{job.execute}" style="width: 460px"/></td>
+                                    </tr>
+                                </ui:repeat>
+                            </table>
+                            <div style="clear: both; display: block; margin: 8px 4px 4px 4px; height: 20px"><a4j:commandLink value="update" actionListener="#{Main.onUpdateSchedule}" style="float: right;display: block; clear: both;"/></div>
+                        </div>
+                    </div>
+                </div>
+
+                <a4j:poll interval="1000" ajaxSingle="false" data="data" oncomplete="myScript(data)"/>
+                <a4j:jsFunction name="initVersionNavigator" data="#{Main.versions}" oncomplete="VersionNavigator.create(data)"/>
+            </h:form>
+    </body>
+</html>

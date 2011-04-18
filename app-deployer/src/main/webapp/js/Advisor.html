@@ -1,0 +1,222 @@
+<html>
+    <head>
+        <style>
+            #adviser {
+                /*position: absolute;*/
+                font-family: arial;
+                font-size: 12px;
+                color: red;
+            }
+
+            #version {
+                font-family: arial;
+                font-size: 12px;
+                color: black;
+                background-color: transparent;
+            }
+
+            input.test {
+                font-family: arial;
+            }
+        </style>
+
+        <script>
+
+            function Adviser(input, data) {
+                this.input = input;
+                this.data = data;
+
+                this.advisePanel = document.createElement("div");
+                input.parentNode.insertBefore(this.advisePanel, input);
+                this.advisePanel.style.zIndex = -1;
+                this.advisePanel.style.position = "absolute";
+                this.advisePanel.style.backgroundColor = this.getCurrentStyle(input, "background-color");
+                this.advisePanel.style.fontFamily = this.getCurrentStyle(input, "font-family");
+                this.advisePanel.style.fontSize = this.getCurrentStyle(input, "font-size");
+                this.advisePanel.style.color = "red";
+
+                this.advisePanel.style.padding = "3px 0 0 3px";
+
+
+                this.input.adviser = this;
+                this.input.suggestionIndex = 0;
+
+                alert(getStyle(input, "fontFamily"));
+                alert(getStyle(input, "font-family"));
+
+                input.onkeypress = function(e) {
+                    var key;
+                    var value;
+                    var data;
+
+                    key = e == null ? window.event.keyCode : e.charCode;
+
+                    if (key == 0) {
+                        return;
+                    }
+
+                    value = this.value + String.fromCharCode(key);
+                    data = this.adviser.data;
+
+                    for (a = 0; a < data.length; a++) {
+                        if (data[a].match("^" + value)) {
+                            this.suggestionIndex = a;
+                            this.adviser.advisePanel.innerHTML = data[a];
+                            return;
+                        }
+                    }
+
+                    return false;
+                };
+
+                input.onkeydown = function(e) {
+                    var key;
+                    var suggestion;
+
+                    key = e == null ? window.event.keyCode : e.keyCode;
+
+                    document.getElementById("debug").innerHTML += "kd: " + key + " " + String.fromCharCode(key);
+
+                    if (key == 13) {
+                        this.value = this.adviser.data[this.suggestionIndex];
+                    }
+
+                    if (key == 37) {
+                        return false;
+                    }
+
+                    if (key == 39) {
+                        value = this.adviser.data[this.suggestionIndex];
+                        if (this.value.length < value.length) {
+                            this.value = value.substring(0, this.value.length + 1);
+                        }
+                    }
+
+                    if (key == 38) {
+                        if (this.suggestionIndex > 0) {
+                            suggestion = this.adviser.data[this.suggestionIndex - 1];
+                            if (suggestion.match("^" + this.value)) {
+                                this.adviser.advisePanel.innerHTML = suggestion;
+                                this.suggestionIndex--;
+                            }
+                        }
+                    }
+
+                     if (key == 40) {
+                         if (this.suggestionIndex < this.adviser.data.length) {
+                             suggestion = this.adviser.data[this.suggestionIndex + 1];
+                             if (suggestion.match("^" + this.value)) {
+                                 this.adviser.advisePanel.innerHTML = suggestion;
+                                 this.suggestionIndex++;
+                             }
+                         }
+                     }
+                };
+
+                input.onclick = function() {
+                    pos = this.value.length;
+
+                    if (this.setSelectionRange) {
+                        this.focus();
+                        this.setSelectionRange(pos, pos);
+                    } else if (this.createTextRange) {
+                        var range = this.createTextRange();
+                        range.collapse(true);
+                        range.moveEnd('character', pos);
+                        range.moveStart('character', pos);
+                        range.select();
+                    }
+                };
+
+                this.advisePanel.innerHTML = this.data[0];
+            }
+
+
+            Adviser.prototype.getCurrentStyle = function(element, style) {
+                var value;
+                var name;
+
+                name = style;
+
+                if (element.currentStyle) {
+                    if (name.indexOf("-") != -1) {
+                        name = name.split("-");
+                        name = name[0] + name[1].substring(0, 1).toUpperCase() + name[1].substring(1);
+                    }
+
+                    value = element.currentStyle[name];
+                    document.getElementById("debug").innerHTML += "ff: " + style + " " + value;
+
+                }
+
+                if (window.getComputedStyle) {
+                    value = document.defaultView.getComputedStyle(element, null).getPropertyValue(name);
+                    document.getElementById("debug").innerHTML += "ff: " + name + " " + value;
+                }
+
+
+
+                return value;
+            };
+
+            Adviser.prototype.up = function() {
+
+            };
+
+            Adviser.prototype.down = function() {
+
+            };
+
+            Adviser.prototype.suggest = function(value) {
+                for (a = 0; a < this.data.length; a++) {
+                    if (data[a].match("^" + value)) {
+                        this.advise.innerHTML = data[a];
+                        return;
+                    }
+                }
+
+                this.advise.innerHTML = "";
+            };
+
+            function init() {
+                data = new Array();
+                data[data.length] = "2.32.3";
+                data[data.length] = "2.32.2";
+                data[data.length] = "2.32.1";
+                data[data.length] = "2.32.0";
+                data[data.length] = "2.31.10";
+                data[data.length] = "2.31.9";
+                data[data.length] = "2.31.8";
+                data[data.length] = "2.31.7";
+                data[data.length] = "2.31.6";
+                data[data.length] = "2.31.5";
+                data[data.length] = "2.31.4";
+                data[data.length] = "2.31.3";
+                data[data.length] = "2.31.2";
+                data[data.length] = "2.31.1";
+                data[data.length] = "2.31.0";
+
+
+                new Adviser(document.getElementById("version"), data);
+            }
+
+            function getStyle(el,styleProp) {
+                var x = el;
+
+                if (x.currentStyle)
+                    var y = x.currentStyle[styleProp];
+                else if (window.getComputedStyle)
+                    var y = document.defaultView.getComputedStyle(x, null).getPropertyValue(styleProp);
+                return y;
+            }
+
+        </script>
+
+    </head>
+
+
+    <body onload="init()">
+        <div id="debug"></div>
+        <input id="version" type="text" style="font-family: arial" class="test test2"/>
+    </body>
+</html>

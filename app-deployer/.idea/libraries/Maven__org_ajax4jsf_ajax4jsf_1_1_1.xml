@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.ajax4jsf:ajax4jsf:1.1.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ajax4jsf/ajax4jsf/1.1.1/ajax4jsf-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ajax4jsf/ajax4jsf/1.1.1/ajax4jsf-1.1.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/ajax4jsf/ajax4jsf/1.1.1/ajax4jsf-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
